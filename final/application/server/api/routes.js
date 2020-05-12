@@ -6,13 +6,13 @@ const router = express.Router();
 const people_module = require('people_module');
 
 // searching for the character
-router.get('/search', async (req,res) =>{
+router.post('/search', async (req,res) =>{
     let searchInput = "ana" // setting default to anakin
     try{
         const searchCharacter = await people_module.search(searchInput) // This is displaying array of characters(objects)
-        // console.log(searchCharacter)
-        const selectCharacter = await user_input(searchCharacter.results) // displaying names(objects) from the "results" array from API
-        res.json({selectCharacter})
+        console.log(searchCharacter)
+        // const selectCharacter = await user_input(searchCharacter.results) // displaying names(objects) from the "results" array from API
+        res.json({searchCharacter}) // might change if use .post
     }catch(err){
         res.json({err})
     }    
