@@ -1,4 +1,4 @@
-const cards = new Vue({
+ const cards = new Vue({
     el: '#cards',
     data:{
         appName: 'Deck of Cards App',
@@ -17,7 +17,6 @@ const cards = new Vue({
     },
     methods:{
         playGame: async function(){
-            this.isPlaying=true;
             // make an http request to our server
             const response = await axios.get(`http://localhost:8888/api/play`)
             this.deck = response.data;

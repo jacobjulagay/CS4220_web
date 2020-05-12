@@ -4,6 +4,7 @@ const router = express.Router() // connects to main server
 
 const deckofcards = require('deckofcards');
 
+// Routes 23 min week14
 //req/res -> request,response
 
 //localhost:8888/api/play

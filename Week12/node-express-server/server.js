@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
+// Video starts at 49:00 - 1:15 week 12
 // Calls the express function
 const app = express();
 const port = 8080;

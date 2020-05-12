@@ -8,9 +8,11 @@ const search = async (searchInput = 'ana') =>{ // Setting a default to ana, if n
         const searchResponse = await superagent.get(searchURL);
         return searchResponse.body; // '.body' returns obj w/out other crap. 
     }catch(error){
+        console.log("error")
         return error;
     }
 }
+
 
 // //
 // //Function that fetches from the API
