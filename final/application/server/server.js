@@ -17,11 +17,11 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '..', '/client')));
 
 // require in the routes created via express router
-const apiRoutes = require('./api/routes.js');
+const people_routes = require('./api/routes.js');
 
 // first argument is a string to prefix to the URL
 // second argument are the routes for our express server to use and apply this prefix to
-app.use('/api', apiRoutes);
+app.use('/api', people_routes);
 
 // start the server
 app.listen(port, () => {
