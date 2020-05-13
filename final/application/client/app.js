@@ -1,10 +1,10 @@
 const cards = new Vue({
-    el: '#cards',
+    el: '#cards', // id 
     data:{
-        appName: 'Deck of Cards App',
-        deck:{},
-        selectedCards:[],
-        isPlaying: false
+        appName: 'Star Wars App',
+        people:[],
+        characterNameInput: '',
+        characterUrl:''
     },
     computed:{
         remainingCards: function(){
@@ -16,28 +16,37 @@ const cards = new Vue({
         }
     },
     methods:{
-        playGame: async function(){
+        search: async function(){
             // make an http request to our server
-            const response = await axios.get(`http://localhost:8888/api/play`)
-            this.deck = response.data;
+            // Passing characternameInput into routes.js
+            const response = await axios.post(`http://localhost:8080/api/search`,{
+                characterNameInput: this.characterNameInput,
+            })
+            console.log(response.data.searchCharacter.results)
+            this.people = response.data.searchCharacter.results;
         },
-        throwawayCards: async function(){
-            this.isPlaying=false;
+        fetch: async function(){
+            const response = await axios.post(`http://localhost:8080/api/fetch`)
+            console.log(response.data.searchCharacter.results)
+            this.people = response.data.searchCharacter.results
+        },
+        // throwawayCards: async function(){
+        //     this.isPlaying=false;
 
-            //Make an http request to our server to throwaway and replace cards
-            // Make sure .post matches with your routes .post
-            const resposne = await axios.post(`http://localhost:8888/api/throwaway`,{
-                deck: this.deck,
-                selectedCards: this.selectedCards
-            });
-            console.log('Throwaway')
-            console.log(response.data)
-            this.deck = response.data
-            this.isPlaying=false;
-        },
-        replay: function(){
-            this.deck = {}
-            this.selectedCards =[]
-        }
+        //     //Make an http request to our server to throwaway and replace cards
+        //     // Make sure .post matches with your routes .post
+        //     const resposne = await axios.post(`http://localhost:8888/api/throwaway`,{
+        //         deck: this.deck,
+        //         selectedCards: this.selectedCards
+        //     });
+        //     console.log('Throwaway')
+        //     console.log(response.data)
+        //     this.deck = response.data
+        //     this.isPlaying=false;
+        // },
+        // replay: function(){
+        //     this.deck = {}
+        //     this.selectedCards =[]
+        // }
     }
 })
