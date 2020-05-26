@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <div id="cards" v-cloak>
+        <div id="starwars" v-cloak>
             <div class="jumbotron jumbotron-fluid">
 
                 <!-- Application Title and tagline-->
@@ -36,55 +36,31 @@
                             <input v-model="characterNameInput"><br>
                            
                         </div>
-
+                        <br>
                         <!-- Search Button-->
                         <div class = "col-lg">
                             <button @click="search" class="btn btn-dark">
                                 Search
                             </button>
                         </div>
-                        
-                    
-
+                        <br>
+                      
                         <!-- Showing Results for search -->
                         <div class="row" v-for="character in people">
                             <div class="col-lg">
                                <ul> 
-                                   {{character.name}}
-                                    <button @click="fetch" class = "btn btn-dark">
-        
-                                        Select
-                                        <!-- {{character.url}} -->
-                                    </button>
+                                   <!-- Display character name -->
+                                   <button @click="fetch" class="btn btn-dark">Fetch</button>
+                                   {{character.name}}                     
                                </ul>
+                               <label>{{character.url}}</label>
+                               <p></p>
                             </div>
-
                         </div>
 
-                        <!-- Show 5 Card Hand When Playing-->
-                        <!-- <div class="row">
-                            <div class="col" v-for="card in deck.cards">
-                                <img v-bind:src="card.image" width="50%" />
-                                <p>
-                                    <input
-                                        type="checkbox"
-                                        v-model="selectedCards"
-                                        :value="card.code"
-                                        v-if="deck.cards && isPlaying"
-                                    />
-                                </p>
-                            </div>
-                        </div> -->
+                      
+                    
 
-                        <!-- Show Appropriate Button When Playing-->
-                        <!-- <div class="row">
-                            <button v-if="deck.cards && isPlaying" @click="throwawayCards" class="btn btn-dark">
-                                Throwaway
-                            </button>
-                            <button v-if="deck.cards && !isPlaying" @click="replay" class="btn btn-dark">
-                                Replay
-                            </button>
-                        </div> -->
                     </div>
                 </div>
             </div>

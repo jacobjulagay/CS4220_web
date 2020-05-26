@@ -20,10 +20,9 @@ router.post('/search', async (req,res) =>{
 
 // Need Fetch
 router.post('/fetch', async (req,res) =>{
-    // const {characterUrl} = req.body
-    let characterURL = "ana"
+    const {characterUrl} = req.body
     try{
-        const fetchCharacter = await people_module.search(characterURL)
+        const fetchCharacter = await people_module.fetch(characterUrl)
         console.log(searchCharacter)
         res.json({fetchCharacter})
     }catch(err){
